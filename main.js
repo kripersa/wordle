@@ -1,14 +1,20 @@
+import { alphabet } from "./alphabet.js";
+import { fiveLetterWordsArray } from "./fiveletterwords.js";
+
+``;
 document.addEventListener("keydown", onKeyPress);
 
 let currentWord = [];
 let currentRow = 0;
 
-let secretWord = "funny";
-
+let secretWord =
+  fiveLetterWordsArray[Math.floor(Math.random() * fiveLetterWordsArray.length)];
+console.log(secretWord);
 function onKeyPress(e) {
   console.log(currentRow);
-  clearTheBoxes(currentWord);
   checkPressedKey(e.key);
+  clearTheBoxes(currentWord);
+  
   fillBoxesWithCurrentWord(currentWord);
   console.log(currentWord);
 }
@@ -32,9 +38,9 @@ function checkSecretWord(currentWord) {
   if (stingifiedCurrentWord === secretWord)
     return console.log("you guessed the word");
   let guessedLetters = "-----";
-
   checkIncludes(stingifiedCurrentWord);
   guess(stingifiedCurrentWord);
+  
 
   function checkIncludes(stingifiedCurrentWord) {
     let splited = guessedLetters.split("");
@@ -79,8 +85,10 @@ function updateCurrentWord(letter) {
   if (letter === "Backspace") {
     currentWord.pop();
   } else {
+    if(alphabet.includes(letter)) {
     if (currentWord.length < 5) {
-      currentWord.push(letter);
+      
+      currentWord.push(letter)}
     }
   }
 }
