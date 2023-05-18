@@ -7,14 +7,14 @@ document.addEventListener("keydown", onKeyPress);
 let currentWord = [];
 let currentRow = 0;
 
-let secretWord =
-  fiveLetterWordsArray[Math.floor(Math.random() * fiveLetterWordsArray.length)];
+let secretWord = "funny";
+// fiveLetterWordsArray[Math.floor(Math.random() * fiveLetterWordsArray.length)];
 console.log(secretWord);
 function onKeyPress(e) {
   console.log(currentRow);
   checkPressedKey(e.key);
   clearTheBoxes(currentWord);
-  
+
   fillBoxesWithCurrentWord(currentWord);
   console.log(currentWord);
 }
@@ -38,9 +38,8 @@ function checkSecretWord(currentWord) {
   if (stingifiedCurrentWord === secretWord)
     return console.log("you guessed the word");
   let guessedLetters = "-----";
-  checkIncludes(stingifiedCurrentWord);
   guess(stingifiedCurrentWord);
-  
+  checkIncludes(stingifiedCurrentWord);
 
   function checkIncludes(stingifiedCurrentWord) {
     let splited = guessedLetters.split("");
@@ -56,11 +55,12 @@ function checkSecretWord(currentWord) {
   function guess(stingifiedCurrentWord) {
     let splited = guessedLetters.split("");
     for (let i = 0; i < guessedLetters.length; i++) {
-      if (stingifiedCurrentWord[i] === secretWord[i]) {
+      if (secretWord.includes(stingifiedCurrentWord[i])) {
         splited[i] = "X";
         splited.join("");
       }
     }
+
     guessedLetters = splited.join("");
     console.log(splited.join(""));
   }
@@ -85,10 +85,10 @@ function updateCurrentWord(letter) {
   if (letter === "Backspace") {
     currentWord.pop();
   } else {
-    if(alphabet.includes(letter)) {
-    if (currentWord.length < 5) {
-      
-      currentWord.push(letter)}
+    if (alphabet.includes(letter)) {
+      if (currentWord.length < 5) {
+        currentWord.push(letter);
+      }
     }
   }
 }
