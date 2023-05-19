@@ -1,22 +1,20 @@
 import { alphabet } from "./alphabet.js";
 import { fiveLetterWordsArray } from "./fiveletterwords.js";
 
-``;
 document.addEventListener("keydown", onKeyPress);
 
 let currentWord = [];
 let currentRow = 0;
 
-let secretWord = "funny";
-// fiveLetterWordsArray[Math.floor(Math.random() * fiveLetterWordsArray.length)];
+let secretWord =
+  fiveLetterWordsArray[Math.floor(Math.random() * fiveLetterWordsArray.length)];
 console.log(secretWord);
 function onKeyPress(e) {
-  console.log(currentRow);
+  // console.log(currentRow);
   checkPressedKey(e.key);
   clearTheBoxes(currentWord);
-
   fillBoxesWithCurrentWord(currentWord);
-  console.log(currentWord);
+  // console.log(currentWord);
 }
 
 function checkPressedKey(pressedKey) {
@@ -34,12 +32,13 @@ function checkPressedKey(pressedKey) {
 }
 
 function checkSecretWord(currentWord) {
+  let guessedLetters = "-----";
   let stingifiedCurrentWord = currentWord.join("");
   if (stingifiedCurrentWord === secretWord)
     return console.log("you guessed the word");
-  let guessedLetters = "-----";
-  guess(stingifiedCurrentWord);
+
   checkIncludes(stingifiedCurrentWord);
+  guess(stingifiedCurrentWord);
 
   function checkIncludes(stingifiedCurrentWord) {
     let splited = guessedLetters.split("");
@@ -55,17 +54,36 @@ function checkSecretWord(currentWord) {
   function guess(stingifiedCurrentWord) {
     let splited = guessedLetters.split("");
     for (let i = 0; i < guessedLetters.length; i++) {
-      if (secretWord.includes(stingifiedCurrentWord[i])) {
+      if (stingifiedCurrentWord[i] === secretWord[i]) {
         splited[i] = "X";
         splited.join("");
       }
     }
 
     guessedLetters = splited.join("");
-    console.log(splited.join(""));
+    giveBoxesColors(guessedLetters);
+    console.log(guessedLetters);
   }
 }
+function giveBoxesColors(guessedLetters) {
+  let boxes = Array.from(
+    document.getElementsByTagName("section")[currentRow].children
+  );
+  let splited = guessedLetters.split("");
+  console.log(guessedLetters);
 
+  for (let m = 0; m < 5; m++) {
+    if (splited[m] === "X") {
+      boxes[m].classList.add("right");
+    }
+    if (splited[m] === "-") {
+      boxes[m].classList.add("empty");
+    }
+    if (splited[m] === "0") {
+      boxes[m].classList.add("include");
+    }
+  }
+}
 function fillBoxesWithCurrentWord(arr) {
   let boxes = Array.from(
     document.getElementsByTagName("section")[currentRow].children
