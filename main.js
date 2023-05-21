@@ -46,18 +46,20 @@ function checkSecretWord(currentWord) {
 
   function checkIncludes(stingifiedCurrentWord) {
     let splited = guessedLetters.split("");
+    console.log(secretWord);
+    console.log(fiveLetterWordsArray);
+    console.log(stingifiedCurrentWord);
+    console.log(fiveLetterWordsArray.includes(stingifiedCurrentWord));
+
     for (let i = 0; i < guessedLetters.length; i++) {
       if (
-        secretWord.includes(
-          stingifiedCurrentWord[i] &&
-            fiveLetterWordsArray.includes(stingifiedCurrentWord)
-        )
-      ) {
+        secretWord.includes(stingifiedCurrentWord[i])       ) {
         splited[i] = "0";
         splited.join("");
       }
     }
     guessedLetters = splited.join("");
+    console.log(guessedLetters);
   }
 
   function guess(stingifiedCurrentWord) {
