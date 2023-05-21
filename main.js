@@ -34,16 +34,25 @@ function checkPressedKey(pressedKey) {
 function checkSecretWord(currentWord) {
   let guessedLetters = "-----";
   let stingifiedCurrentWord = currentWord.join("");
-  if (stingifiedCurrentWord === secretWord)
+  if (stingifiedCurrentWord === secretWord) {
+    guessedLetters = "XXXXX";
+    giveBoxesColors(guessedLetters);
     return console.log("you guessed the word");
+  }
 
   checkIncludes(stingifiedCurrentWord);
   guess(stingifiedCurrentWord);
+  incoretWord(stingifiedCurrentWord);
 
   function checkIncludes(stingifiedCurrentWord) {
     let splited = guessedLetters.split("");
     for (let i = 0; i < guessedLetters.length; i++) {
-      if (secretWord.includes(stingifiedCurrentWord[i])) {
+      if (
+        secretWord.includes(
+          stingifiedCurrentWord[i] &&
+            fiveLetterWordsArray.includes(stingifiedCurrentWord)
+        )
+      ) {
         splited[i] = "0";
         splited.join("");
       }
@@ -54,7 +63,10 @@ function checkSecretWord(currentWord) {
   function guess(stingifiedCurrentWord) {
     let splited = guessedLetters.split("");
     for (let i = 0; i < guessedLetters.length; i++) {
-      if (stingifiedCurrentWord[i] === secretWord[i]) {
+      if (
+        stingifiedCurrentWord[i] === secretWord[i] &&
+        fiveLetterWordsArray.includes(stingifiedCurrentWord)
+      ) {
         splited[i] = "X";
         splited.join("");
       }
@@ -64,23 +76,35 @@ function checkSecretWord(currentWord) {
     giveBoxesColors(guessedLetters);
     console.log(guessedLetters);
   }
+  function incoretWord(stingifiedCurrentWord) {
+    if (!fiveLetterWordsArray.includes(stingifiedCurrentWord)) {
+      guessedLetters = "";
+      currentWord = currentWord;
+      currentRow--;
+
+      alert("Incorect Word");
+    }
+  }
 }
 function giveBoxesColors(guessedLetters) {
-  let boxes = Array.from(
-    document.getElementsByTagName("section")[currentRow].children
-  );
-  let splited = guessedLetters.split("");
-  console.log(guessedLetters);
+  let stingifiedCurrentWord = currentWord.join("");
+  if (fiveLetterWordsArray.includes(stingifiedCurrentWord)) {
+    let boxes = Array.from(
+      document.getElementsByTagName("section")[currentRow].children
+    );
+    let splited = guessedLetters.split("");
+    console.log(guessedLetters);
 
-  for (let m = 0; m < 5; m++) {
-    if (splited[m] === "X") {
-      boxes[m].classList.add("right");
-    }
-    if (splited[m] === "-") {
-      boxes[m].classList.add("empty");
-    }
-    if (splited[m] === "0") {
-      boxes[m].classList.add("include");
+    for (let m = 0; m < 5; m++) {
+      if (splited[m] === "X") {
+        boxes[m].classList.add("right");
+      }
+      if (splited[m] === "-") {
+        boxes[m].classList.add("empty");
+      }
+      if (splited[m] === "0") {
+        boxes[m].classList.add("include");
+      }
     }
   }
 }
