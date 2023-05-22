@@ -5,8 +5,8 @@ section {
 }
 
 section > div {
-  width: 100px;
-  height: 100px;
+  width: 60px;
+  height: 60px;
   border: 2px solid black;
   margin: 2px;
   line-height: 100px;
