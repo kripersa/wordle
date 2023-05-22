@@ -41,16 +41,12 @@ function checkSecretWord(currentWord) {
   let guessedLetters = "-----";
   let stingifiedCurrentWord = currentWord.join("");
   if (stingifiedCurrentWord === secretWord) {
+    guessedLetters = "XXXXX";
+    giveBoxesColors(guessedLetters);
     h1.style.display = "none";
     h2.innerText = "Congratulations";
     h3.innerText = `Secret word was : ${secretWord}`;
     winner.style.visibility = "visible";
-
-    console.log(winner);
-    guessedLetters = "XXXXX";
-    giveBoxesColors(guessedLetters);
-    // h2.innerText = "Congratulations"
-    return console.log("you guessed the word");
   }
 
   checkIncludes(stingifiedCurrentWord);
