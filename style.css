@@ -1,25 +1,37 @@
+html {
+  padding: 0;
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 section {
   display: flex;
   justify-content: center;
   align-items: center;
 }
+body {
+  background-color: rgb(36, 65, 60);
+}
 
 section > div {
-  width: 44px;
-  height: 44px;
-  border: 2px solid black;
+  width: 50px;
+  height: 50px;
+  border: 2px solid rgb(184, 184, 60);
   margin: 2px;
   line-height: 44px;
   text-align: center;
   font-size: 30px;
+  color: rgb(160, 65, 27);
 }
 
 h1 {
-  color:rgb(36, 65, 60);
   margin-top: 10px;
   text-align: center;
   margin-bottom: 10px;
   font-size: 25px;
+  color: rgb(151, 222, 18);
 }
 
 .right {
@@ -28,7 +40,7 @@ h1 {
 }
 
 .empty {
-  background-color: rgb(36, 65, 60);
+  background-color: grey;
   color: white;
 }
 .include {
@@ -78,9 +90,22 @@ a {
   border-radius: 3px;
 }
 .grey {
-  background-color: rgb(36, 65, 60);
-  border: 1px solid rgb(36, 65, 60);
+  background-color: grey;
+  border: 1px solid grey;
   padding: 2px;
   color: white;
   border-radius: 3px;
+}
+.rules {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  color: rgb(151, 222, 18);
+  font-weight: bold;
+  font-size: 18px;
+}
+.rules > p {
+  margin: 5px;
 }
