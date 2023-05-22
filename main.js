@@ -24,7 +24,7 @@ function checkPressedKey(pressedKey) {
       currentRow += 1;
       atempt += 1;
       currentWord = [];
-      console.log(atempt);
+      
     } else {
       console.error("Word should be five letters ");
     }
@@ -64,7 +64,7 @@ function checkSecretWord(currentWord) {
       }
     }
     guessedLetters = splited.join("");
-    console.log(guessedLetters);
+
   }
 
   function guess(stingifiedCurrentWord) {
@@ -81,7 +81,7 @@ function checkSecretWord(currentWord) {
 
     guessedLetters = splited.join("");
     giveBoxesColors(guessedLetters);
-    console.log(guessedLetters);
+;
   }
   function incoretWord(stingifiedCurrentWord) {
     if (!fiveLetterWordsArray.includes(stingifiedCurrentWord)) {
@@ -101,7 +101,7 @@ function giveBoxesColors(guessedLetters) {
       document.getElementsByTagName("section")[currentRow].children
     );
     let splited = guessedLetters.split("");
-    console.log(guessedLetters);
+  
 
     for (let m = 0; m < 5; m++) {
       if (splited[m] === "X") {
@@ -154,6 +154,6 @@ function gameOver() {
     h3.innerText = `Secret word was : ${secretWord}`;
     winner.style.visibility = "visible";
     winner.style.height = "100vh"
-    console.log(atempt);
+   
   }
 }
