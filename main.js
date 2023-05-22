@@ -47,6 +47,7 @@ function checkSecretWord(currentWord) {
     h2.innerText = "Congratulations";
     h3.innerText = `Secret word was : ${secretWord}`;
     winner.style.visibility = "visible";
+    winner.style.height = "100vh"
   }
 
   checkIncludes(stingifiedCurrentWord);
@@ -152,6 +153,7 @@ function gameOver() {
     h2.innerText = "Unfortunately , you  loose";
     h3.innerText = `Secret word was : ${secretWord}`;
     winner.style.visibility = "visible";
+    winner.style.height = "100vh"
     console.log(atempt);
   }
 }
