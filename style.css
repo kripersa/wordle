@@ -9,9 +9,9 @@ section > div {
   height: 60px;
   border: 2px solid black;
   margin: 2px;
-  line-height: 100px;
+
   text-align: center;
-  font-size: 60px;
+  font-size: 40px;
 }
 
 h1 {
