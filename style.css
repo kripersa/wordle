@@ -2,7 +2,6 @@ section {
   display: flex;
   justify-content: center;
   align-items: center;
- 
 }
 
 section > div {
@@ -15,26 +14,51 @@ section > div {
   font-size: 60px;
 }
 
-h1{
-margin-top: 20px;
+h1 {
+  margin-top: 20px;
   text-align: center;
   margin-bottom: 30px;
   font-size: 50px;
-
 }
 
-.right{
+.right {
   background-color: green;
   color: white;
 }
 
-
-.empty{
+.empty {
   background-color: grey;
   color: white;
 }
-.include{
+.include {
   background-color: rgb(191, 203, 20);
   color: white;
+}
 
+.winner {
+  position: absolute;
+  visibility: hidden;
+  width: 100%;
+  min-height: calc(100vh);
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background-color: rgb(30, 58, 123);
+}
+
+h2 {
+  font-size: 45px;
+  color: rgb(81, 225, 20);
+}
+h3 {
+  font-size: 45px;
+  color: rgb(81, 225, 20);
+}
+
+a {
+  text-decoration: none;
+  font-size: 45px;
+  color: rgb(81, 225, 20);
 }

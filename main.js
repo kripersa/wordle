@@ -5,16 +5,16 @@ document.addEventListener("keydown", onKeyPress);
 
 let currentWord = [];
 let currentRow = 0;
+let atempt = 0;
 
 let secretWord =
   fiveLetterWordsArray[Math.floor(Math.random() * fiveLetterWordsArray.length)];
 console.log(secretWord);
 function onKeyPress(e) {
-  // console.log(currentRow);
   checkPressedKey(e.key);
+  gameOver();
   clearTheBoxes(currentWord);
   fillBoxesWithCurrentWord(currentWord);
-  // console.log(currentWord);
 }
 
 function checkPressedKey(pressedKey) {
@@ -22,7 +22,9 @@ function checkPressedKey(pressedKey) {
     if (currentWord.length === 5) {
       checkSecretWord(currentWord);
       currentRow += 1;
+      atempt += 1;
       currentWord = [];
+      console.log(atempt);
     } else {
       console.error("Word should be five letters ");
     }
@@ -32,11 +34,22 @@ function checkPressedKey(pressedKey) {
 }
 
 function checkSecretWord(currentWord) {
+  let h1 = document.querySelector("#h1");
+  let h2 = document.querySelector("#h2");
+  let h3 = document.querySelector("#h3");
+  let winner = document.querySelector(".winner");
   let guessedLetters = "-----";
   let stingifiedCurrentWord = currentWord.join("");
   if (stingifiedCurrentWord === secretWord) {
+    h1.style.display = "none";
+    h2.innerText = "Congratulations";
+    h3.innerText = `Secret word was : ${secretWord}`;
+    winner.style.visibility = "visible";
+
+    console.log(winner);
     guessedLetters = "XXXXX";
     giveBoxesColors(guessedLetters);
+    // h2.innerText = "Congratulations"
     return console.log("you guessed the word");
   }
 
@@ -46,14 +59,9 @@ function checkSecretWord(currentWord) {
 
   function checkIncludes(stingifiedCurrentWord) {
     let splited = guessedLetters.split("");
-    console.log(secretWord);
-    console.log(fiveLetterWordsArray);
-    console.log(stingifiedCurrentWord);
-    console.log(fiveLetterWordsArray.includes(stingifiedCurrentWord));
 
     for (let i = 0; i < guessedLetters.length; i++) {
-      if (
-        secretWord.includes(stingifiedCurrentWord[i])       ) {
+      if (secretWord.includes(stingifiedCurrentWord[i])) {
         splited[i] = "0";
         splited.join("");
       }
@@ -83,6 +91,7 @@ function checkSecretWord(currentWord) {
       guessedLetters = "";
       currentWord = currentWord;
       currentRow--;
+      atempt--;
 
       alert("Incorect Word");
     }
@@ -134,5 +143,19 @@ function updateCurrentWord(letter) {
         currentWord.push(letter);
       }
     }
+  }
+}
+
+function gameOver() {
+  let h1 = document.querySelector("#h1");
+  let h2 = document.querySelector("#h2");
+  let h3 = document.querySelector("#h3");
+  let winner = document.querySelector(".winner");
+  if (atempt === 6) {
+    h1.style.display = "none";
+    h2.innerText = "Unfortunately , you  loose";
+    h3.innerText = `Secret word was : ${secretWord}`;
+    winner.style.visibility = "visible";
+    console.log(atempt);
   }
 }
