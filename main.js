@@ -24,6 +24,8 @@ function checkPressedKey(pressedKey) {
       currentRow += 1;
       atempt += 1;
       currentWord = [];
+      console.log(atempt);
+
     } else {
       alert("Word should be five letters ");
     }
@@ -87,7 +89,7 @@ function checkSecretWord(currentWord) {
   function incoretWord(stingifiedCurrentWord) {
     if (!fiveLetterWordsArray.includes(stingifiedCurrentWord)) {
       guessedLetters = "";
-   
+    atempt--
       currentRow--;
 
       alert("Incorect Word");
