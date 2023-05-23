@@ -38,6 +38,7 @@ function checkSecretWord(currentWord) {
   let h2 = document.querySelector("#h2");
   let h3 = document.querySelector("#h3");
   let winner = document.querySelector(".winner");
+  let firework  = document.querySelector(".fireworkdiv")
   let guessedLetters = "-----";
   let stingifiedCurrentWord = currentWord.join("");
   if (stingifiedCurrentWord === secretWord) {
@@ -49,6 +50,9 @@ function checkSecretWord(currentWord) {
     winner.style.visibility = "visible";
     winner.style.height = "100vh"
     winner.style.backgroundColor = "rgb(68, 16, 174)"
+    console.log(firework);
+    firework.style.display = "block"
+    // firework.style.zIndex = "9999"
   }
 
   checkIncludes(stingifiedCurrentWord);
