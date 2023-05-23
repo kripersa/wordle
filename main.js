@@ -24,9 +24,8 @@ function checkPressedKey(pressedKey) {
       currentRow += 1;
       atempt += 1;
       currentWord = [];
-      
     } else {
-      console.error("Word should be five letters ");
+      alert("Word should be five letters ");
     }
   } else {
     updateCurrentWord(pressedKey);
@@ -38,7 +37,7 @@ function checkSecretWord(currentWord) {
   let h2 = document.querySelector("#h2");
   let h3 = document.querySelector("#h3");
   let winner = document.querySelector(".winner");
-  let firework  = document.querySelector(".fireworkdiv")
+  let firework = document.querySelector(".fireworkdiv");
   let guessedLetters = "-----";
   let stingifiedCurrentWord = currentWord.join("");
   if (stingifiedCurrentWord === secretWord) {
@@ -48,11 +47,10 @@ function checkSecretWord(currentWord) {
     h2.innerText = "Congratulations";
     h3.innerText = `Secret word was : ${secretWord}`;
     winner.style.visibility = "visible";
-    winner.style.height = "100vh"
-    winner.style.backgroundColor = "rgb(68, 16, 174)"
-    console.log(firework);
-    firework.style.display = "block"
-    // firework.style.zIndex = "9999"
+    winner.style.height = "100vh";
+    winner.style.backgroundColor = "rgb(68, 16, 174)";
+
+    firework.style.display = "block";
   }
 
   checkIncludes(stingifiedCurrentWord);
@@ -69,7 +67,6 @@ function checkSecretWord(currentWord) {
       }
     }
     guessedLetters = splited.join("");
-
   }
 
   function guess(stingifiedCurrentWord) {
@@ -86,14 +83,12 @@ function checkSecretWord(currentWord) {
 
     guessedLetters = splited.join("");
     giveBoxesColors(guessedLetters);
-;
   }
   function incoretWord(stingifiedCurrentWord) {
     if (!fiveLetterWordsArray.includes(stingifiedCurrentWord)) {
       guessedLetters = "";
       currentWord = currentWord;
       currentRow--;
-      atempt--;
 
       alert("Incorect Word");
     }
@@ -106,7 +101,6 @@ function giveBoxesColors(guessedLetters) {
       document.getElementsByTagName("section")[currentRow].children
     );
     let splited = guessedLetters.split("");
-  
 
     for (let m = 0; m < 5; m++) {
       if (splited[m] === "X") {
@@ -149,17 +143,17 @@ function updateCurrentWord(letter) {
 }
 
 function gameOver() {
+  let stingifiedCurrentWord = currentWord.join("");
   let h1 = document.querySelector("#h1");
   let h2 = document.querySelector("#h2");
   let h3 = document.querySelector("#h3");
   let winner = document.querySelector(".winner");
-  if (atempt === 6) {
+  if (atempt === 6 && winner.style.backgroundColor != "rgb(68, 16, 174)") {
     h1.style.display = "none";
     h2.innerText = "Unfortunately , you  loose";
     h3.innerText = `Secret word was : ${secretWord}`;
     winner.style.visibility = "visible";
-    winner.style.height = "100vh"
-    winner.style.backgroundColor = "rgb(100, 15, 59)"
-   
+    winner.style.height = "100vh";
+    winner.style.backgroundColor = "rgb(100, 15, 59)";
   }
 }
