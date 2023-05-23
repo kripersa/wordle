@@ -48,6 +48,7 @@ function checkSecretWord(currentWord) {
     h3.innerText = `Secret word was : ${secretWord}`;
     winner.style.visibility = "visible";
     winner.style.height = "100vh"
+    winner.style.backgroundColor = "rgb(68, 16, 174)"
   }
 
   checkIncludes(stingifiedCurrentWord);
@@ -154,6 +155,7 @@ function gameOver() {
     h3.innerText = `Secret word was : ${secretWord}`;
     winner.style.visibility = "visible";
     winner.style.height = "100vh"
+    winner.style.backgroundColor = "rgb(100, 15, 59)"
    
   }
 }
