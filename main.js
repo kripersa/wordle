@@ -87,7 +87,7 @@ function checkSecretWord(currentWord) {
   function incoretWord(stingifiedCurrentWord) {
     if (!fiveLetterWordsArray.includes(stingifiedCurrentWord)) {
       guessedLetters = "";
-      currentWord = currentWord;
+   
       currentRow--;
 
       alert("Incorect Word");
